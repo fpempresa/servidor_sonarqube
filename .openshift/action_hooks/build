@@ -63,6 +63,6 @@ cp ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9/bin/wrapper-linux-x86-64 ${OPEN
 cp ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9/lib/libwrapper-linux-x86-64.so ${OPENSHIFT_DATA_DIR}sonarqube/bin/linux-x86-64/lib/libwrapper.so
 
 echo -e "\nwrapper.backend.type=PIPE" >> ${OPENSHIFT_DATA_DIR}sonarqube/conf/wrapper.conf
-echo -e "\nwrapper.port=0" >> ${OPENSHIFT_DATA_DIR}sonarqube/conf/wrapper.conf
+
 
 
