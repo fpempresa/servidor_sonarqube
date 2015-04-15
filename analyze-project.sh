@@ -14,5 +14,5 @@ if [ "$GIT_BRANCH" != "" ]; then
 fi
 
 export SONAR_USER_HOME=$OPENSHIFT_TMP_DIR/$DIR_TMP_SONAR
-export SONAR_RUNNER_HOME=$OPENSHIFT_HOMEDIR/diy/sonar-runner
-$OPENSHIFT_HOMEDIR/diy/sonar-runner/bin/sonar-runner
+export SONAR_RUNNER_HOME=$OPENSHIFT_REPO_DIR/sonar-runner
+$OPENSHIFT_REPO_DIR/sonar-runner/bin/sonar-runner
