@@ -29,15 +29,13 @@ then
   
   SONAR_RUNNER_FILE=$OPENSHIFT_REPO_DIR/sonar-runner/conf/sonar-runner.properties
   echo "cambiando username"
-  sed -i "s/^sonar.jdbc.username.*$/sonar.jdbc.username=$OPENSHIFT_POSTGRESQL_DB_USERNAME/" $SONAR_RUNNER_FILE
+  sed -i "s/^#sonar.jdbc.username.*$/sonar.jdbc.username=$OPENSHIFT_POSTGRESQL_DB_USERNAME/" $SONAR_RUNNER_FILE
   echo "cambiando password"
-  sed -i "s/^sonar.jdbc.password.*$/sonar.jdbc.password=$OPENSHIFT_POSTGRESQL_DB_PASSWORD/" $SONAR_RUNNER_FILE
-  echo "comentando jdbc"
-  sed -i 's/^sonar.jdbc.url/#sonar.jdbc.url/' $SONAR_RUNNER_FILE
+  sed -i "s/^#sonar.jdbc.password.*$/sonar.jdbc.password=$OPENSHIFT_POSTGRESQL_DB_PASSWORD/" $SONAR_RUNNER_FILE
   echo "jdbc"
-  sed -i "s/^.*sonar.jdbc.url=jdbc:postgresql.*$/sonar.jdbc.url=jdbc:postgresql://$PG_URL;" $SONAR_RUNNER_FILE
+  sed -i "s;#sonar.jdbc.url=jdbc:postgresql.*$;sonar.jdbc.url=jdbc:postgresql://$PG_URL;" $SONAR_RUNNER_FILE
   echo "url host"
-  sed -i "s/^.*sonar.host.url.*$/sonar.host.url=http://$OPENSHIFT_DIY_IP:$OPENSHIFT_DIY_PORT" $SONAR_RUNNER_FILE
+  sed -i "s;^.*sonar.host.url.*$;sonar.host.url=http://$OPENSHIFT_DIY_IP:$OPENSHIFT_DIY_PORT;" $SONAR_RUNNER_FILE
   
   cat $SONAR_RUNNER_FILE
   
