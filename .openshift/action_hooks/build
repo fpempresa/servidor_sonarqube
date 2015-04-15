@@ -26,6 +26,14 @@ then
   sed -i "s/^sonar.jdbc.password.*$/sonar.jdbc.password=$OPENSHIFT_POSTGRESQL_DB_PASSWORD/" sonar.properties
   sed -i 's/^sonar.jdbc.url/#sonar.jdbc.url/' sonar.properties
   sed -i "s;^.*sonar.jdbc.url=jdbc:postgresql.*$;sonar.jdbc.url=jdbc:postgresql://$PG_URL;" sonar.properties
+  
+  sed -i "s/^sonar.jdbc.username.*$/sonar.jdbc.username=$OPENSHIFT_POSTGRESQL_DB_USERNAME/" $OPENSHIFT_HOMEDIR/diy/sonar-runner/conf/sonar-runner.properties
+  sed -i "s/^sonar.jdbc.password.*$/sonar.jdbc.password=$OPENSHIFT_POSTGRESQL_DB_PASSWORD/" $OPENSHIFT_HOMEDIR/diy/sonar-runner/conf/sonar-runner.properties
+  sed -i 's/^sonar.jdbc.url/#sonar.jdbc.url/' $OPENSHIFT_HOMEDIR/diy/sonar-runner/conf/sonar-runner.properties
+  sed -i "s;^.*sonar.jdbc.url=jdbc:postgresql.*$;sonar.jdbc.url=jdbc:postgresql://$PG_URL;" $OPENSHIFT_HOMEDIR/diy/sonar-runner/conf/sonar-runner.properties
+  sed -i "s/^.*sonar.host.url.*$/sonar.host.url=http://$OPENSHIFT_DIY_IP:$OPENSHIFT_DIY_PORT" $OPENSHIFT_HOMEDIR/diy/sonar-runner/conf/sonar-runner.properties  
+  
+  
 fi
 
 cd $OPENSHIFT_DATA_DIR
